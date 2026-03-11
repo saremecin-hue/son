@@ -3,156 +3,147 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Edebi Diyalog Oluşturucu</title>
+<title>Eko-Söz</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="home" class="view active">
+<!-- 1. SAYFA -->
 
-<h1 class="title">★ Edebi Diyalog Oluşturucu ★</h1>
+<div id="home" class="page active">
 
-<div class="homeButtons">
+<div class="title blue">Eko-Söz</div>
 
-<button onclick="openView('themePage')">
-Temasına Göre
-</button>
+<div class="button green" onclick="openPage('era')">
+Dönemine göre
+</div>
 
-<button onclick="openView('authorPage')">
-Yazara Göre
-</button>
+<div class="button green" onclick="openPage('author')">
+Yazarına Göre
+</div>
 
-<button onclick="openView('eraPage')">
-Yılına Göre
-</button>
-
+<div class="button green" onclick="openPage('theme')">
+Temasına göre
 </div>
 
 </div>
 
 
+<!-- 2. SAYFA -->
 
-<div id="themePage" class="view">
+<div id="theme" class="page">
 
-<h2>Temasına Göre Diyalog</h2>
+<div class="title green">Temasına Göre Edebi Karakter Diyaloğu</div>
+
+<div class="box">Tema seçiniz</div>
 
 <select>
-<option>Aşk</option>
-<option>Ölüm</option>
-<option>Toplum</option>
-<option>Doğa</option>
+<option>aşk</option>
+<option>insan toplum çatışması</option>
+<option>özgürlük</option>
+<option>ölüm</option>
+<option>adalet</option>
+</select>
+
+<div class="row">
+
+<select>
+<option>1. yazar seçin</option>
 </select>
 
 <select>
-<option>Hamlet</option>
-<option>Don Kişot</option>
-<option>Anna Karenina</option>
+<option>2. yazar seçin</option>
 </select>
 
-<select>
-<option>Raskolnikov</option>
-<option>Madame Bovary</option>
-<option>Heathcliff</option>
-</select>
+</div>
 
-<button onclick="openView('resultPage')">
-Diyalog Oluştur
-</button>
+<div class="pink">karakterler random seçilir</div>
 
-<button onclick="openView('home')">
-Geri
-</button>
+<button onclick="openPage('result')">Metin oluştur</button>
+
+<button onclick="openPage('home')">←</button>
 
 </div>
 
 
 
-<div id="authorPage" class="view">
+<!-- 3. SAYFA -->
 
-<h2>Yazara Göre Diyalog</h2>
+<div id="era" class="page">
+
+<div class="title green">Dönemine Göre</div>
 
 <select>
-<option>Shakespeare</option>
-<option>Dostoyevski</option>
-<option>Kafka</option>
+<option>1. dönem seçin</option>
 </select>
 
 <select>
-<option>Tolstoy</option>
-<option>Victor Hugo</option>
-<option>Goethe</option>
+<option>2. dönem seçin</option>
 </select>
 
-<input placeholder="Konu (opsiyonel)">
+<div class="pink">karakterler random seçilir</div>
 
-<button onclick="openView('resultPage')">
-Diyalog Oluştur
-</button>
+<button onclick="openPage('result')">Metin oluştur</button>
 
-<button onclick="openView('home')">
-Geri
-</button>
+<button onclick="openPage('home')">←</button>
+
+</div>
+
+
+<!-- 4. SAYFA -->
+
+<div id="author" class="page">
+
+<div class="title green">Yazarına Göre</div>
+
+<select>
+<option>1. yazar seçin</option>
+</select>
+
+<select>
+<option>2. yazar seçin</option>
+</select>
+
+<div class="box">Temayı seçiniz</div>
+
+<button onclick="openPage('result')">Metin oluştur</button>
+
+<button onclick="openPage('home')">←</button>
 
 </div>
 
 
 
-<div id="eraPage" class="view">
+<!-- 5. SAYFA -->
 
-<h2>Döneme Göre Diyalog</h2>
+<div id="result" class="page">
 
-<select>
-<option>Rönesans</option>
-<option>Romantizm</option>
-<option>Realizm</option>
-</select>
+<div class="result">
 
-<select>
-<option>Modernizm</option>
-<option>Postmodernizm</option>
-<option>Klasisizm</option>
-</select>
-
-<button onclick="openView('resultPage')">
-Diyalog Oluştur
-</button>
-
-<button onclick="openView('home')">
-Geri
-</button>
-
+<div class="author">
+<img src="author1.png">
+<p>1. Yazar</p>
 </div>
-
-
-
-<div id="resultPage" class="view">
-
-<h2>Oluşturulan Diyalog</h2>
 
 <div class="dialog">
 
-<div class="character">
-<img src="avatar1.png">
-<p>Karakter 1</p>
+<p>1. konuşmacı metni...</p>
+<p>2. konuşmacı metni...</p>
+
 </div>
 
-<div class="dialogText">
-Lorem ipsum karakter diyaloğu burada görünecek.
-</div>
-
-<div class="character">
-<img src="avatar2.png">
-<p>Karakter 2</p>
+<div class="author">
+<img src="author2.png">
+<p>2. Yazar</p>
 </div>
 
 </div>
 
-<button onclick="openView('home')">
-Ana Sayfa
-</button>
+<button onclick="openPage('home')">Ana sayfa</button>
 
 </div>
+
 
 <script src="script.js"></script>
 

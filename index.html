@@ -1,155 +1,157 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eko-Söz</title>
-    <style>
-        :root {
-            --eco-green: #4ade80;
-            --dark-green: #166534;
-            --bg-color: #f0fdf4;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            width: 90%;
-            max-width: 500px;
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .page { display: none; }
-        .active { display: block; }
-        
-        h1 { color: var(--dark-green); margin-bottom: 30px; }
-        
-        /* Notlardaki Yeşil Oval Buton Tasarımı  */
-        .btn-green {
-            background-color: var(--eco-green);
-            color: black;
-            border: 2px solid #000;
-            padding: 15px 30px;
-            margin: 10px 0;
-            border-radius: 50px; /* Pill-shaped [cite: 97] */
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-            font-size: 16px;
-            transition: transform 0.2s;
-        }
-        .btn-green:hover { transform: scale(1.02); }
-        
-        select, input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-        }
-        
-        .result-box {
-            text-align: left;
-            padding: 15px;
-            border: 1px solid var(--eco-green);
-            border-radius: 10px;
-            background: #fff;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-        .author-info { display: flex; justify-content: space-around; margin-bottom: 15px; }
-        .author-card { font-size: 12px; border: 1px solid #ddd; padding: 5px; border-radius: 5px; }
-    </style>
+<meta charset="UTF-8">
+<title>Edebi Diyalog Oluşturucu</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
-    <div id="page1" class="page active">
-        <h1>Eko-Söz [cite: 44]</h1>
-        <button class="btn-green" onclick="showPage('page4')">Dönemine Göre [cite: 47]</button>
-        <button class="btn-green" onclick="showPage('page5')">Yazarına Göre [cite: 48]</button>
-        <button class="btn-green" onclick="showPage('page3')">Temasına Göre [cite: 49]</button>
-    </div>
+<!-- HOME -->
+<div id="home" class="view active">
 
-    <div id="page3" class="page">
-        <h3>Tema Seçiniz [cite: 67]</h3>
-        <select id="temaSelect">
-            <option>Özgürlük [cite: 52]</option>
-            <option>Ahlak ve Vicdan [cite: 53]</option>
-            <option>Vatan Sevgisi ve Sorumluluk [cite: 55]</option>
-            <option>İnsan-Toplum Çatışması [cite: 56, 57]</option>
-            <option>Gelenek-Modernleşme [cite: 58]</option>
-            <option>Ölüm-Yaşam [cite: 61]</option>
-        </select>
-        <button class="btn-green" onclick="generateText()">Metin Oluştur [cite: 73]</button>
-        <button class="btn-green" style="background:#ddd" onclick="showPage('page1')">Geri [cite: 68]</button>
-    </div>
+<h1>Edebi Diyalog Oluşturucu</h1>
 
-    <div id="page4" class="page">
-        <h3>Dönem Seçin [cite: 89]</h3>
-        <select id="donem1">
-            <option>İslamiyet Öncesi [cite: 84]</option>
-            <option>Divan Edebiyatı [cite: 85]</option>
-            <option>Tanzimat [cite: 85]</option>
-            <option>Milli Edebiyat [cite: 87]</option>
-        </select>
-        <button class="btn-green" onclick="generateText()">Metin Oluştur [cite: 94]</button>
-        <button class="btn-green" style="background:#ddd" onclick="showPage('page1')">Geri</button>
-    </div>
+<div class="home-buttons">
 
-    <div id="page5" class="page">
-        <h3>Yazar Seçin [cite: 99, 100]</h3>
-        <input type="text" placeholder="1. Yazar">
-        <input type="text" placeholder="2. Yazar">
-        <button class="btn-green" onclick="generateText()">Metin Oluştur [cite: 107]</button>
-        <button class="btn-green" style="background:#ddd" onclick="showPage('page1')">Geri</button>
-    </div>
+<button onclick="openView('themePage')">
+Temasına Göre
+</button>
 
-    <div id="page6" class="page">
-        <div class="author-info">
-            <div class="author-card"><strong>Yazar 1</strong><br>Dönem Bilgisi [cite: 113]</div>
-            <div class="author-card"><strong>Yazar 2</strong><br>Dönem Bilgisi [cite: 115]</div>
-        </div>
-        <div class="result-box" id="resultArea">
-            </div>
-        <button class="btn-green" onclick="showPage('page1')">Yeni Karşılaştırma</button>
-    </div>
+<button onclick="openView('authorPage')">
+Yazara Göre
+</button>
+
+<button onclick="openView('eraPage')">
+Yılına Göre
+</button>
+
 </div>
 
-<script>
-    function showPage(pageId) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
-    }
+</div>
 
-    function generateText() {
-        const resultArea = document.getElementById('resultArea');
-        showPage('page6');
-        resultArea.innerHTML = "<b>Yükleniyor...</b>";
-        
-        // Simüle edilmiş 500 kelimelik metin algoritması [cite: 39, 120]
-        setTimeout(() => {
-            resultArea.innerHTML = `
-                <h4>Edebi Karşılaştırma [cite: 50]</h4>
-                <p>Seçilen temada yazarların üslubu ve dönemlerine bağlı olarak farklılıklar görülmektedir[cite: 123, 127]. 
-                Birinci yazarın yaklaşımı geleneksel çizgideyken, ikinci yazar modernleşme etkisindedir[cite: 58, 125]. 
-                Bu metin yaklaşık 500 kelime olacak şekilde kurgulanmıştır[cite: 39]. 
-                Konuşmacıların dönemlerine bağlı olarak üslupları bu noktada ayrışmaktadır[cite: 128].</p>
-                <hr>
-                <p><i>Not: Bu alan yapay zeka entegrasyonu ile gerçek zamanlı metin üretebilir.</i></p>
-            `;
-        }, 1000);
-    }
-</script>
+
+<!-- THEME PAGE -->
+<div id="themePage" class="view">
+
+<h2>Temasına Göre Edebi Diyalog</h2>
+
+<label>Tema Seç</label>
+<select id="themeSelect">
+<option>Aşk</option>
+<option>Ölüm</option>
+<option>Toplum</option>
+<option>Doğa</option>
+</select>
+
+<label>Karakter 1</label>
+<select id="char1">
+<option>Hamlet</option>
+<option>Don Kişot</option>
+<option>Anna Karenina</option>
+</select>
+
+<label>Karakter 2</label>
+<select id="char2">
+<option>Raskolnikov</option>
+<option>Madame Bovary</option>
+<option>Heathcliff</option>
+</select>
+
+<button onclick="generate()">Diyalog Oluştur</button>
+
+<button onclick="openView('home')">Geri</button>
+
+</div>
+
+
+<!-- AUTHOR PAGE -->
+<div id="authorPage" class="view">
+
+<h2>Yazara Göre Diyalog</h2>
+
+<label>Yazar 1</label>
+<select id="author1">
+<option>Shakespeare</option>
+<option>Dostoyevski</option>
+<option>Goethe</option>
+</select>
+
+<label>Yazar 2</label>
+<select id="author2">
+<option>Tolstoy</option>
+<option>Kafka</option>
+<option>Victor Hugo</option>
+</select>
+
+<label>Konu (opsiyonel)</label>
+<input type="text" id="topic">
+
+<button onclick="generate()">Diyalog Oluştur</button>
+
+<button onclick="openView('home')">Geri</button>
+
+</div>
+
+
+<!-- ERA PAGE -->
+<div id="eraPage" class="view">
+
+<h2>Döneme Göre Diyalog</h2>
+
+<label>Dönem 1</label>
+<select id="era1">
+<option>Rönesans</option>
+<option>Romantizm</option>
+<option>Realizm</option>
+</select>
+
+<label>Dönem 2</label>
+<select id="era2">
+<option>Modernizm</option>
+<option>Postmodernizm</option>
+<option>Klasisizm</option>
+</select>
+
+<button onclick="generate()">Diyalog Oluştur</button>
+
+<button onclick="openView('home')">Geri</button>
+
+</div>
+
+
+<!-- RESULT PAGE -->
+<div id="resultPage" class="view">
+
+<h2>Diyalog</h2>
+
+<div class="dialogue">
+
+<div class="character">
+<img src="avatar1.png">
+<p id="char1Name"></p>
+</div>
+
+<div class="text">
+<p id="resultText">
+Burada oluşturulan diyalog görünecek.
+</p>
+</div>
+
+<div class="character">
+<img src="avatar2.png">
+<p id="char2Name"></p>
+</div>
+
+</div>
+
+<button onclick="openView('home')">Ana Sayfa</button>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>

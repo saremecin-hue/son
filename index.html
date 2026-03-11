@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
 <meta charset="UTF-8">
 <title>Edebi Diyalog Oluşturucu</title>
@@ -8,12 +9,11 @@
 
 <body>
 
-<!-- HOME -->
 <div id="home" class="view active">
 
-<h1>Edebi Diyalog Oluşturucu</h1>
+<h1 class="title">★ Edebi Diyalog Oluşturucu ★</h1>
 
-<div class="home-buttons">
+<div class="homeButtons">
 
 <button onclick="openView('themePage')">
 Temasına Göre
@@ -32,124 +32,127 @@ Yılına Göre
 </div>
 
 
-<!-- THEME PAGE -->
+
 <div id="themePage" class="view">
 
-<h2>Temasına Göre Edebi Diyalog</h2>
+<h2>Temasına Göre Diyalog</h2>
 
-<label>Tema Seç</label>
-<select id="themeSelect">
+<select>
 <option>Aşk</option>
 <option>Ölüm</option>
 <option>Toplum</option>
 <option>Doğa</option>
 </select>
 
-<label>Karakter 1</label>
-<select id="char1">
+<select>
 <option>Hamlet</option>
 <option>Don Kişot</option>
 <option>Anna Karenina</option>
 </select>
 
-<label>Karakter 2</label>
-<select id="char2">
+<select>
 <option>Raskolnikov</option>
 <option>Madame Bovary</option>
 <option>Heathcliff</option>
 </select>
 
-<button onclick="generate()">Diyalog Oluştur</button>
+<button onclick="openView('resultPage')">
+Diyalog Oluştur
+</button>
 
-<button onclick="openView('home')">Geri</button>
+<button onclick="openView('home')">
+Geri
+</button>
 
 </div>
 
 
-<!-- AUTHOR PAGE -->
+
 <div id="authorPage" class="view">
 
 <h2>Yazara Göre Diyalog</h2>
 
-<label>Yazar 1</label>
-<select id="author1">
+<select>
 <option>Shakespeare</option>
 <option>Dostoyevski</option>
+<option>Kafka</option>
+</select>
+
+<select>
+<option>Tolstoy</option>
+<option>Victor Hugo</option>
 <option>Goethe</option>
 </select>
 
-<label>Yazar 2</label>
-<select id="author2">
-<option>Tolstoy</option>
-<option>Kafka</option>
-<option>Victor Hugo</option>
-</select>
+<input placeholder="Konu (opsiyonel)">
 
-<label>Konu (opsiyonel)</label>
-<input type="text" id="topic">
+<button onclick="openView('resultPage')">
+Diyalog Oluştur
+</button>
 
-<button onclick="generate()">Diyalog Oluştur</button>
-
-<button onclick="openView('home')">Geri</button>
+<button onclick="openView('home')">
+Geri
+</button>
 
 </div>
 
 
-<!-- ERA PAGE -->
+
 <div id="eraPage" class="view">
 
 <h2>Döneme Göre Diyalog</h2>
 
-<label>Dönem 1</label>
-<select id="era1">
+<select>
 <option>Rönesans</option>
 <option>Romantizm</option>
 <option>Realizm</option>
 </select>
 
-<label>Dönem 2</label>
-<select id="era2">
+<select>
 <option>Modernizm</option>
 <option>Postmodernizm</option>
 <option>Klasisizm</option>
 </select>
 
-<button onclick="generate()">Diyalog Oluştur</button>
+<button onclick="openView('resultPage')">
+Diyalog Oluştur
+</button>
 
-<button onclick="openView('home')">Geri</button>
+<button onclick="openView('home')">
+Geri
+</button>
 
 </div>
 
 
-<!-- RESULT PAGE -->
+
 <div id="resultPage" class="view">
 
-<h2>Diyalog</h2>
+<h2>Oluşturulan Diyalog</h2>
 
-<div class="dialogue">
+<div class="dialog">
 
 <div class="character">
 <img src="avatar1.png">
-<p id="char1Name"></p>
+<p>Karakter 1</p>
 </div>
 
-<div class="text">
-<p id="resultText">
-Burada oluşturulan diyalog görünecek.
-</p>
+<div class="dialogText">
+Lorem ipsum karakter diyaloğu burada görünecek.
 </div>
 
 <div class="character">
 <img src="avatar2.png">
-<p id="char2Name"></p>
+<p>Karakter 2</p>
 </div>
 
 </div>
 
-<button onclick="openView('home')">Ana Sayfa</button>
+<button onclick="openView('home')">
+Ana Sayfa
+</button>
 
 </div>
-
 
 <script src="script.js"></script>
 
